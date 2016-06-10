@@ -1,28 +1,28 @@
 
-Unity_Settlers/Library/**/*
-Unity_Settlers/Library/
+Library/**/*
+Library/
 
 ===============
 Unity generated
 ===============
-Unity_Settlers/Temp/
-Unity_Settlers/Library/
-Unity_Settlers/Builds
+Temp/
+Library/
+Builds
 
 =====================================
 Visual Studio / MonoDevelop generated
 =====================================
-Unity_Settlers/ExportedObj/
-Unity_Settlers/obj/
-Unity_Settlers/*.svd
-Unity_Settlers/*.userprefs
-Unity_SettlersUnity_Settlers//*.csproj
-Unity_Settlers/*.pidb
-Unity_Settlers/*.suo
-Unity_Settlers/*.sln
-Unity_Settlers/*.user
-Unity_Settlers/*.unityproj
-Unity_Settlers/*.booproj
+ExportedObj/
+obj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
 
 ============
 OS generated
@@ -57,16 +57,11 @@ SolarSystem_Impression.userprefs
 
 SolarSystem_Impression.sln
 
-Assembly-CSharp.csproj
-
 Assembly-CSharp-firstpass.csproj
 
 Assembly-CSharp-Editor.csproj
 
 Assembly-CSharp.csproj
 
-Assembly-CSharp.csproj
-
-SolarSystem_Impression.sln
 
 Temp/**/*
