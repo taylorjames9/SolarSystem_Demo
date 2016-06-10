@@ -39,7 +39,7 @@ Thumbs.db
 
 *.meta
 
-Unity_Settlers/Unity_Settlers.userprefs
+SolarSystem_Impression.userprefs
 
 *.sln
 
@@ -53,22 +53,20 @@ Unity_Settlers/Unity_Settlers.userprefs
 
 *.sln
 
-Unity_Settlers/Unity_Settlers.userprefs
+SolarSystem_Impression.userprefs
 
-Unity_Settlers/Unity_Settlers.sln
+SolarSystem_Impression.sln
 
-Unity_Settlers/Assembly-CSharp.csproj
+Assembly-CSharp.csproj
 
-Unity_Settlers/Assembly-CSharp-firstpass.csproj
+Assembly-CSharp-firstpass.csproj
 
-Unity_Settlers/Assembly-CSharp-Editor.csproj
+Assembly-CSharp-Editor.csproj
 
-Unity_Settlers/Assembly-CSharp.csproj
+Assembly-CSharp.csproj
 
-Unity_Settlers/Assembly-CSharp.csproj
+Assembly-CSharp.csproj
 
-Unity_Settlers/Unity_Settlers.sln
+SolarSystem_Impression.sln
 
-Unity_Settlers/Unity_Settlers.userprefs
-
-Unity_Settlers/Temp/**/*
+Temp/**/*
