@@ -33,6 +33,10 @@ public class BuoyancyField : ForceField.CustomFieldFunction
         return -coefficient * Physics.gravity * EstimateSubmergedVolume(rigidbody);
     }
 
+	public override void SetForce(float pingValue){
+
+	}
+
     //this method is not accurate for concave collider
     //basically it cut the bounds of the rigidbody in to pieces, and then use raycast to get the true volume that occupied by the collider
     float EstimateSubmergedVolume(Rigidbody rigidbody)

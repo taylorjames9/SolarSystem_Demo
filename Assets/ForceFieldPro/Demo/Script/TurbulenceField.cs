@@ -23,4 +23,7 @@ public class TurbulenceField : ForceField.CustomFieldFunction
         rigidbody.AddTorque(torque);
         return force;
     }
+	public override void SetForce(float pingValue ){
+
+	}
 }

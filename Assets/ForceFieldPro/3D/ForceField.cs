@@ -16,6 +16,9 @@ public class ForceField : MonoBehaviour
     [FFToolTip("If true then the force will ignore mass, which means the field will apply acceleration rather than force on the targets.")]
     public bool ignoreMass = false;
 
+	//[SerializeField]
+	//public FFCentripetalField myCentripetalField;
+
     [FFToolTip("Set this to false to disable all the tooltips.")]
     public bool showTooltips = true;
 
@@ -64,6 +67,7 @@ public class ForceField : MonoBehaviour
         /// <param name="position"></param>
         /// <param name="target"></param>
         /// <returns></returns>
+		void SetForce(float pingVal);
         Vector3 GetForce(Vector3 position, Rigidbody target);
     }
     #endregion
@@ -335,14 +339,28 @@ public class ForceField : MonoBehaviour
         {
             return force * direction;
         }
+		public void SetForce(float pingValue){
+			force = pingValue;
+
+		}
     }
+	float pingValue;
+	bool flipSwitch;
+	void Update()
+	{
+		pingValue = Mathf.PingPong (Time.time, 3) - 1.5f;
+		GameObject osc_obj = GameObject.Find ("OscillatingWeightObject");
+		////osc_obj.GetComponent<ForceField> ().
+
+		//osc_obj.GetComponent<FFCentripetalField> ().SetForce (pingValue);
+	}
 
     /// <summary>
     /// This field returns a vector that always point to the reference point.
     /// Note that positive force is outward.
     /// </summary>
     [Serializable]
-    public class FFCentripetalField : IFieldFunction
+    public class FFCentripetalField : MonoBehaviour, IFieldFunction
     {
         /// <summary>
         /// The reference point of the field.
@@ -362,6 +380,11 @@ public class ForceField : MonoBehaviour
         /// </summary>
         public DistanceModifier distanceModifier;
 
+		public void SetForce(float pingValue){
+			force = pingValue;
+
+		}
+
         /// <summary>
         /// Return the force vector at given position.
         /// </summary>
@@ -369,7 +392,16 @@ public class ForceField : MonoBehaviour
         /// <returns></returns>
         public Vector3 GetForce(Vector3 position, Rigidbody target)
         {
-            Vector3 x = position - referencePoint;
+			GameObject osc_obj = GameObject.Find ("OscillatingWeightObject");
+            
+			//if(osc_obj.name.Equals("OscillatingWeightObject")){
+			force += UnityEngine.Random.Range (-0.001f, 0.001f);
+			//Debug.Log ("Get Force = "+force);
+			if (force > 1.5f || force < -1.5f) {
+				force = 0;
+			}
+			//}
+			Vector3 x = position - referencePoint;
             return force * distanceModifier.getModifier(x.magnitude) * x.normalized;
         }
     }
@@ -421,8 +453,13 @@ public class ForceField : MonoBehaviour
         public Vector3 GetForce(Vector3 position, Rigidbody target)
         {
             Vector3 x = position - (referencePoint + Vector3.Dot(direction, position - referencePoint) * direction);
+
             return force * distanceModifier.getModifier(x.magnitude) * x.normalized;
         }
+		public void SetForce(float pingValue){
+			force = pingValue;
+
+		}
     }
 
     /// <summary>
@@ -478,6 +515,10 @@ public class ForceField : MonoBehaviour
             float sign = Mathf.Sign(signedDistance);
             return force * distanceModifier.getModifier(Mathf.Abs(signedDistance)) * sign * referencePlane.normal;
         }
+		public void SetForce(float pingValue){
+			force = pingValue;
+
+		}
     }
 
     #endregion
@@ -508,6 +549,10 @@ public class ForceField : MonoBehaviour
         /// <param name="rigidbody"></param>
         /// <returns></returns>
         public abstract Vector3 GetForce(Vector3 position, Rigidbody rigidbody);
+		public abstract void SetForce (float pingValue);
+			//force = pingValue;
+
+
     }
     #endregion
 
@@ -806,11 +851,35 @@ public class ForceField : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
+//	[SerializeField]
+//	public FFCentripetalField myCentripetalField;
+    // Update is called once per frame
+//    void Update()
+//    {
+//		
+//		GameObject.Find("OscillatingWeightObject").GetComponent<ForceField>()
+//	}
+
+		//FFCentripetalField.force = pingValue;
+
+
+		//FFCentripetalField myCentripetalField = FFCentripetalField;
+		//FFCentripetalField.force = Mathf.PingPong (Time.time, 3) - 1.5f;
+
+//		if (Mathf.Floor (Time.timeSinceLevelLoad) % 3 == 0) {
+//			flipSwitch = true;
+//		}
+//		if(flipSwitch){
+//			pingValue += UnityEngine.Random.Range(-0.1f, 0.1f);
+//			Debug.Log ("Ping value = " + pingValue);
+//			flipSwitch = false;
+//			FFCentripetalField.serializedObject.FindProperty ("force");
+//			//serializedObject.FindProperty("FFCentripetalField.force");
+//		}
+//		if (pingValue > 1.5f || pingValue < -1.5f)
+//			pingValue = 0;
+//	 }
 
     void FixedUpdate()
     {

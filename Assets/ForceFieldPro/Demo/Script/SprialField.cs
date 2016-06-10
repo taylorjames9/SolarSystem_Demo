@@ -22,4 +22,7 @@ public class SprialField : ForceField.CustomFieldFunction
         }
         return force * size;
     }
+	public override void SetForce(float pingValue){
+
+	}
 }

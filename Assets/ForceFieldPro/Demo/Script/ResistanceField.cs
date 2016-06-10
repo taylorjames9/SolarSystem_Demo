@@ -18,4 +18,7 @@ public class ResistanceField : ForceField.CustomFieldFunction
         rigidbody.angularVelocity *= angularSpeedDamp;
         return Vector3.zero;
     }
+	public override void SetForce(float pingValue){
+
+	}
 }
